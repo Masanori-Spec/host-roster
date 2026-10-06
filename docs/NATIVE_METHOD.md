@@ -1,6 +1,6 @@
 # Actual Zed deserializer method and limits
 
-The source-only native gate passed on exact commit 7caba20d09d773ccf1b0def6f673fa79d21b9d8c, run https://github.com/Masanori-Spec/host-roster/actions/runs/37432374941. Actual Rust compilation/execution accepted the synthetic fragment. The offline browser UI is now built; its current exact-commit browser-download → native-consumer outcome must be checked in the current workflow. No Zed GUI session or connection is tested.
+The source-only native gate passed on exact commit 7caba20d09d773ccf1b0def6f673fa79d21b9d8c, run https://github.com/Masanori-Spec/host-roster/actions/runs/37432374941. The complete offline UI gate then passed on exact commit a6146257d37974e64a73699c16a45662b651958d, run https://github.com/Masanori-Spec/host-roster/actions/runs/37438119300: 34 source/package checks, four browser tests, and actual browser-download consumption by the same pinned upstream Rust implementation. Four expected entries were accepted; eight malformed controls were rejected. No Zed GUI session or SSH connection was tested.
 
 ## Upstream identity
 
@@ -55,3 +55,7 @@ python scripts/consume-browser-download.py
 ```
 
 The browser suite serves `.offline-preview/serve.py` and saves one actual `ssh-connections.json`. The final command consumes that file using the already built, locked same upstream Rust probe and requires the fixed four expected entries plus eight rejected controls. It is not a comparison against a JavaScript reimplementation of Zed's schema. CI uploads the actual download, offline package, screenshots, native results, compiler version, and resolved dependency-lock metadata; it never uploads `.native/` or its binaries.
+
+## Verified browser artifact identities
+
+The UI run artifact SHA-256 is `b912d3e33057967e41875f2f6b860d080761b9c8d245f91315500ac52e86d563`. The actual browser download is `76cdcffb32d3639fee796aae200dd09d2147e32a9b4d55eec2c1c64b0c436b27`; its two existing entries remain identical to the fixture and new entries contain only the allowed fields. The ten-entry offline ZIP is `ebafa795d38958a1d85854d3c5d108d7b1c6440ee78b79b70ecd70187b32bec6`, byte-identical between CI and the delivered bundle. All 41 resolved registry version/checksum tuples match the pinned upstream lock. These are identified historical results, not an automatic assertion about untested future source changes.
