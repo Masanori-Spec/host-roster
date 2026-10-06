@@ -1,0 +1,72 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> host-roster@0.1.0 verify
+> npm run build && npm run package:offline && npm test && npm run fixture
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> host-roster@0.1.0 build
+> node scripts/build-ui.mjs
+
+Built seven self-contained UI assets; no third-party runtime or network dependency
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> host-roster@0.1.0 package:offline
+> python scripts/package-offline.py
+
+Offline ZIP: host-roster-offline.zip (21734 bytes)
+SHA256: ebafa795d38958a1d85854d3c5d108d7b1c6440ee78b79b70ecd70187b32bec6
+Round-trip verified: 10 entries; browser CI serves the extracted bytes
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> host-roster@0.1.0 test
+> node --test tests/engine.test.mjs
+
+✔ Include closure anchors relative paths at virtual ~/.ssh and uses lexical order (2.905406ms)
+✔ existing entries are preserved, only absent selections append restricted fields (1.152313ms)
+✔ patterns/negations are reported as skipped; options never become output fields (0.545136ms)
+✔ reject missing include (1.17663ms)
+✔ reject conditional include (0.271201ms)
+✔ reject Match exec (0.225202ms)
+✔ reject cycle (0.335366ms)
+✔ reject unsafe alias (0.259964ms)
+✔ reject traversal (0.292653ms)
+✔ reject absolute include (0.336478ms)
+✔ reject private key (0.181098ms)
+✔ reject missing root (0.247135ms)
+✔ reject duplicate file (0.175179ms)
+✔ reject unknown selection (0.290739ms)
+✔ reject command field (0.282658ms)
+✔ reject path shell syntax (0.27747ms)
+✔ reject other settings fragment (0.193837ms)
+✔ reject byte bound (1.266532ms)
+✔ reject file bound (0.215939ms)
+✔ reject alias bound (1.203979ms)
+✔ Include depth is bounded at eight files (0.342716ms)
+✔ unused supplied files are explicit and repeated aliases retain sources (0.215499ms)
+✔ Include wildcards skip leading-dot entries unless explicitly dotted (0.387153ms)
+✔ key markers in existing entries and user fields are rejected before export (0.227777ms)
+✔ literal alias beside a negated/pattern token is omitted conservatively (0.208328ms)
+✔ complete payload and nesting are bounded before copying existing entries (1.406439ms)
+✔ non-ASCII syntax whitespace is rejected while Unicode comments are allowed (0.634268ms)
+✔ malformed known existing fields fail closed; accepted unknown fields are unchanged (1.018075ms)
+✔ ambiguous existing aliases and case-only target matches are blocked (0.451287ms)
+✔ inert HTML nickname stays data while private key markers block all outputs (0.266684ms)
+✔ workspace sanitizer supports empty selection without inventing project paths (0.510986ms)
+✔ packaged Worker produces the same four-entry fragment and rejects ambiguity (4.741999ms)
+✔ offline launch serves all seven extracted assets without a browser or external network (77.097597ms)
+✔ ignored fields on kept-existing selections are sanitized before UI state is installed (2.341892ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 213.747739
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> host-roster@0.1.0 fixture
+> node scripts/generate-fixture.mjs
+
+Generated synthetic fragment; no filesystem SSH reads or connections

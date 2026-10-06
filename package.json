@@ -1,1 +1,18 @@
-{"name":"host-roster","version":"0.0.1-feasibility","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.mjs","fixture":"node scripts/generate-fixture.mjs"}}
+{
+  "name": "host-roster",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/engine.test.mjs",
+    "fixture": "node scripts/generate-fixture.mjs",
+    "build": "node scripts/build-ui.mjs",
+    "package:offline": "python scripts/package-offline.py",
+    "test:browser": "playwright test",
+    "verify": "npm run build && npm run package:offline && npm test && npm run fixture"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.1"
+  },
+  "description": "Offline bounded SSH Include alias selection and Zed fragment review"
+}

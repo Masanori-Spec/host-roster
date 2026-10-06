@@ -2,3 +2,8 @@
 node_modules/
 __pycache__/
 *.pyc
+dist/
+release/
+.offline-preview/
+playwright-report/
+test-results/

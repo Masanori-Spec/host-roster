@@ -1,6 +1,6 @@
 # Actual Zed deserializer method and limits
 
-Status of this source snapshot: JavaScript tests and source extraction pass locally; native compilation/execution is unproved until CI runs. There is no GUI.
+The source-only native gate passed on exact commit 7caba20d09d773ccf1b0def6f673fa79d21b9d8c, run https://github.com/Masanori-Spec/host-roster/actions/runs/37432374941. Actual Rust compilation/execution accepted the synthetic fragment. The offline browser UI is now built; its current exact-commit browser-download → native-consumer outcome must be checked in the current workflow. No Zed GUI session or connection is tested.
 
 ## Upstream identity
 
@@ -30,7 +30,7 @@ The root Includes `conf.d/*.conf` then declares local-dev.invalid. `10-work.conf
 
 The generated fragment keeps local-dev.invalid's existing project/user/port/args and work-dev.invalid's existing nickname/project unchanged. Only work-alt.invalid and build-box.invalid are appended, with explicit projects and optional entered nickname. HostName and authentication/routing fields never populate new entries.
 
-The actual Zed root-only suggestion parser must return only local-dev.invalid from the unexpanded root. The actual settings deserializer must accept all four emitted entries and their fixed expected values. Six malformed inputs must report failure: numeric host, missing host, non-array paths, numeric nickname, overflowing port, and non-array ssh_connections.
+The actual Zed root-only suggestion parser must return only local-dev.invalid from the unexpanded root. The actual settings deserializer must accept all four emitted entries and their fixed expected values. The six baseline malformed inputs must report failure: numeric host, missing host, non-array paths, numeric nickname, overflowing port, and non-array ssh_connections. The UI gate adds two corruptions of the actual downloaded/generated fragment: replace a new project collection or host with a number. Both must fail the same real deserializer.
 
 ## What this does not prove
 
@@ -38,4 +38,20 @@ This is not a real GUI session, an SSH connection test, complete OpenSSH semanti
 
 ## Distribution boundary
 
-Official files are fetched into ignored `.native/` only for verification, with original GPL/Apache license texts. CI uploads only `evidence/`, never the generated upstream source tree, compiled executable, registry caches, or toolchain. Public source/Library archives exclude `.native/`. There is no original-code license grant or assertion that upstream licenses apply to unrelated HostRoster code.
+Official files are fetched into ignored `.native/` only for verification, with original GPL/Apache license texts. CI uploads verification reports, the offline release, browser downloads/screenshots, and the browser report (`evidence/`, `release/`, `test-results/`, `playwright-report/`). It never uploads `.native/`, generated upstream source, compiled native probes, registry caches, or the toolchain. Public source/Library archives exclude `.native/`. There is no original-code license grant or assertion that upstream licenses apply to unrelated HostRoster code.
+
+## Reproduce current source and browser-consumer checks
+
+```sh
+npm ci
+npm run verify
+python scripts/prepare-native.py
+rustup toolchain install 1.98.1 --profile minimal
+cargo +1.98.1 run --manifest-path .native/probe/Cargo.toml -- fixtures/include-closure.json evidence/generated-fragment.json > evidence/zed-native-result.json
+python scripts/check-native-evidence.py
+npx playwright install --with-deps chromium
+npm run test:browser
+python scripts/consume-browser-download.py
+```
+
+The browser suite serves `.offline-preview/serve.py` and saves one actual `ssh-connections.json`. The final command consumes that file using the already built, locked same upstream Rust probe and requires the fixed four expected entries plus eight rejected controls. It is not a comparison against a JavaScript reimplementation of Zed's schema. CI uploads the actual download, offline package, screenshots, native results, compiler version, and resolved dependency-lock metadata; it never uploads `.native/` or its binaries.

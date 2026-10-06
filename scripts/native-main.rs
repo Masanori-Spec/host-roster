@@ -70,6 +70,13 @@ fn main() {
         assert_eq!(result["status"], "rejected", "Negative control unexpectedly accepted: {name}");
         negatives.push(serde_json::json!({"name":name,"result":result}));
     }
+    for (name, field) in [("downloaded-new-project-corrupted", "projects"), ("downloaded-new-host-corrupted", "host")] {
+        let mut bad = fragment.clone();
+        bad["ssh_connections"][2][field] = serde_json::json!(42);
+        let result = inspect(&bad.to_string());
+        assert_eq!(result["status"], "rejected", "Actual fragment corruption unexpectedly accepted");
+        negatives.push(serde_json::json!({"name":name,"result":result}));
+    }
     println!("{}", serde_json::to_string_pretty(&serde_json::json!({
         "zed_tag":"v1.22.0", "zed_commit":"76659a55a8c10ed355a070f8764a0b1733e3c115",
         "consumer":"Actual extracted upstream RemoteSettingsContent + SshConnection types with unchanged settings_macros/fallible_options",

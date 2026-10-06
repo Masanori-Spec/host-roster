@@ -1,0 +1,18 @@
+export default {
+  "root": "config",
+  "files": [
+    {"path":"config","content":"Include conf.d/*.conf\nHost local-dev.invalid\n  HostName local.invalid\n  User synthetic-user\n"},
+    {"path":"conf.d/10-work.conf","content":"Include shared/build.conf\nHost work-dev.invalid work-alt.invalid\n  HostName work.invalid\n  User ignored-user\n  Port 2222\n  IdentityFile /synthetic/not-a-real-key\n  ProxyJump synthetic-jump.invalid\n"},
+    {"path":"shared/build.conf","content":"Host build-box.invalid\n  HostName build.invalid\n"},
+    {"path":"conf.d/20-personal.conf","content":"Host personal-dev.invalid\n  HostName personal.invalid\nHost *.invalid !excluded.invalid\n  User ignored-pattern-user\n"}
+  ],
+  "existing": {"ssh_connections":[
+    {"host":"local-dev.invalid","projects":[{"paths":["~/code/local"]}],"username":"existing-synthetic-user","port":2200,"args":["-o","BatchMode=yes"]},
+    {"host":"work-dev.invalid","nickname":"Existing work nickname","projects":[{"paths":["~/code/keep-work"]}]}
+  ]},
+  "selections":[
+    {"alias":"work-dev.invalid","nickname":"Must not overwrite","projects":[{"paths":["~/code/do-not-overwrite"]}]},
+    {"alias":"work-alt.invalid","projects":[{"paths":["~/code/new-work"]}],"nickname":"Work alternate"},
+    {"alias":"build-box.invalid","projects":[{"paths":["/srv/synthetic/build"]}]}
+  ]
+};
