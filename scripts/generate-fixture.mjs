@@ -1,0 +1,2 @@
+import fs from 'node:fs';import {generate} from '../host_roster/engine.mjs';
+const fixture=JSON.parse(fs.readFileSync('fixtures/include-closure.json','utf8'));const result=generate(fixture);fs.mkdirSync('evidence',{recursive:true});fs.writeFileSync('evidence/generated-fragment.json',JSON.stringify(result.fragment,null,2)+'\n');fs.writeFileSync('evidence/inventory-report.json',JSON.stringify(result.report,null,2)+'\n');console.log('Generated synthetic fragment; no filesystem SSH reads or connections');

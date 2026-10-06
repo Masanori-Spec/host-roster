@@ -1,0 +1,118 @@
+{
+  "aliases": [
+    {
+      "host": "build-box.invalid",
+      "sources": [
+        {
+          "file": "shared/build.conf",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "host": "work-dev.invalid",
+      "sources": [
+        {
+          "file": "conf.d/10-work.conf",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "host": "work-alt.invalid",
+      "sources": [
+        {
+          "file": "conf.d/10-work.conf",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "host": "personal-dev.invalid",
+      "sources": [
+        {
+          "file": "conf.d/20-personal.conf",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "host": "local-dev.invalid",
+      "sources": [
+        {
+          "file": "config",
+          "line": 2
+        }
+      ]
+    }
+  ],
+  "includes": [
+    {
+      "from": "config",
+      "line": 1,
+      "pattern": "conf.d/*.conf",
+      "matches": [
+        "conf.d/10-work.conf",
+        "conf.d/20-personal.conf"
+      ]
+    },
+    {
+      "from": "conf.d/10-work.conf",
+      "line": 1,
+      "pattern": "shared/build.conf",
+      "matches": [
+        "shared/build.conf"
+      ]
+    }
+  ],
+  "skippedPatterns": [
+    {
+      "file": "conf.d/20-personal.conf",
+      "line": 3,
+      "pattern": "*.invalid",
+      "reason": "Pattern-bearing Host line omitted"
+    },
+    {
+      "file": "conf.d/20-personal.conf",
+      "line": 3,
+      "pattern": "!excluded.invalid",
+      "reason": "Pattern-bearing Host line omitted"
+    }
+  ],
+  "ignoredDirectives": [
+    "HostName",
+    "IdentityFile",
+    "Port",
+    "ProxyJump",
+    "User"
+  ],
+  "visitedFiles": [
+    "config",
+    "conf.d/10-work.conf",
+    "shared/build.conf",
+    "conf.d/20-personal.conf"
+  ],
+  "unvisitedFiles": [],
+  "scope": "Only supplied files, unconditional pre-Host Includes, and literal aliases. No SSH option evaluation or connection test.",
+  "decisions": [
+    {
+      "host": "work-dev.invalid",
+      "action": "kept-existing",
+      "reason": "Existing entries remain unchanged; supplied edits are not applied"
+    },
+    {
+      "host": "work-alt.invalid",
+      "action": "appended"
+    },
+    {
+      "host": "build-box.invalid",
+      "action": "appended"
+    }
+  ],
+  "newEntryFields": [
+    "host",
+    "projects",
+    "nickname?"
+  ],
+  "connectionsAttempted": 0
+}

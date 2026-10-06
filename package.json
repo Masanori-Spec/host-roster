@@ -1,0 +1,1 @@
+{"name":"host-roster","version":"0.0.1-feasibility","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.mjs","fixture":"node scripts/generate-fixture.mjs"}}

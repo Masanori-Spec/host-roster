@@ -1,0 +1,52 @@
+{
+  "ssh_connections": [
+    {
+      "host": "local-dev.invalid",
+      "projects": [
+        {
+          "paths": [
+            "~/code/local"
+          ]
+        }
+      ],
+      "username": "existing-synthetic-user",
+      "port": 2200,
+      "args": [
+        "-o",
+        "BatchMode=yes"
+      ]
+    },
+    {
+      "host": "work-dev.invalid",
+      "nickname": "Existing work nickname",
+      "projects": [
+        {
+          "paths": [
+            "~/code/keep-work"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "work-alt.invalid",
+      "projects": [
+        {
+          "paths": [
+            "~/code/new-work"
+          ]
+        }
+      ],
+      "nickname": "Work alternate"
+    },
+    {
+      "host": "build-box.invalid",
+      "projects": [
+        {
+          "paths": [
+            "/srv/synthetic/build"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "commit": "76659a55a8c10ed355a070f8764a0b1733e3c115",
+  "tag": "v1.22.0",
+  "toolchain": "1.98.1",
+  "files": [
+    {
+      "path": "crates/settings_content/src/fallible_options.rs",
+      "bytes": 6265,
+      "blob_sha": "731b83b464f13681304d541b14dda2009f492002",
+      "sha256": "2f61f51ccc4693378ca0bdb9f0d7c71db539c29907a4632ec71e627958a590d7"
+    },
+    {
+      "path": "crates/settings_content/src/merge_from.rs",
+      "bytes": 4715,
+      "blob_sha": "82e3ee9a24e34445cf90b13c446c7b6356586500",
+      "sha256": "9c8f90226d5406a3e0fcafbbaa827856faf78a8b9680bf4bbfe3e86858319617"
+    },
+    {
+      "path": "crates/settings_content/src/settings_content.rs",
+      "bytes": 48127,
+      "blob_sha": "290a14c0d9852c8dd23238ca2a7802e04f54117f",
+      "sha256": "f731e2b846bdd1e12b4a0ef955f2a135a773ffa87dce4d9bf85ea876d64158d9"
+    },
+    {
+      "path": "crates/settings_macros/src/settings_macros.rs",
+      "bytes": 5030,
+      "blob_sha": "bad786991da9502cb2ff0763f754aae4a54801af",
+      "sha256": "51c1d9bdc83fc4dee9e3b5b22c08129ea94f1e8a5f003b6b8a073b740bdf7cbb"
+    },
+    {
+      "path": "crates/collections/src/collections.rs",
+      "bytes": 617,
+      "blob_sha": "9a7f4942c8b66fdb2c74412ff18e0196bad1a130",
+      "sha256": "49d25d361182a7cdc5d95591d4f2c9a43dd3ae2217dee123b4133120d17494cd"
+    },
+    {
+      "path": "crates/collections/src/vecmap.rs",
+      "bytes": 5380,
+      "blob_sha": "bec6596b924742daf4e1da3831f1182557875d61",
+      "sha256": "5d5d4a459dc7fea27a2d0370577ba5c98bc19caf52dac533f90dc4e01fedc5ec"
+    },
+    {
+      "path": "crates/gpui_util/src/arc_cow.rs",
+      "bytes": 3351,
+      "blob_sha": "41040671bc68910397fcff47170f043d950e1920",
+      "sha256": "d10dea6ce77e8374a8cbe8b24eae50b6c571d9173b9278c7971a5d52143ac5bf"
+    },
+    {
+      "path": "crates/gpui_util/src/lib.rs",
+      "bytes": 21039,
+      "blob_sha": "37279de56e9524d9ddc2fc27d18e182442f0b6ac",
+      "sha256": "7f9c064f1172fbb89ee6be083fefdb9636b68b23b2296abb1c141839752b1e0c"
+    },
+    {
+      "path": "crates/language_model_core/src/request.rs",
+      "bytes": 25579,
+      "blob_sha": "0d9752e3e8c93b89a1a09a5f0195f0fea5da9311",
+      "sha256": "76b7547325e3437fe30e1281918e0fec9232372085d45e2e56a7c8f26a9a05df"
+    },
+    {
+      "path": "crates/recent_projects/src/ssh_config.rs",
+      "bytes": 5653,
+      "blob_sha": "6641c2df14d572d85591ed705f17f377682d58ee",
+      "sha256": "7ad3dcaf65598cab9ada2ee08d8f032f7072e36eff4ab87dee1a2b9133b1424c"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 503536,
+      "blob_sha": "aaf874031bda15413213b75f2ab0ce103176b561",
+      "sha256": "f65a17082a63bc0ceadc5e56e1a83fbaeea1b399f512594fcdbe0045104ed331"
+    },
+    {
+      "path": "LICENSE-APACHE",
+      "bytes": 10768,
+      "blob_sha": "461a0fe5ba20a096c281a2686da08fef79f534a3",
+      "sha256": "752daf2fb234ca4a1fa372c073fe127f44b7b90fd2529ae44273a64f9d53da7a"
+    },
+    {
+      "path": "LICENSE-GPL",
+      "bytes": 34357,
+      "blob_sha": "cb82534a8de43d8e4b43c47486063bcd22411908",
+      "sha256": "0aa0322ea494da441088e4d9144c6720bf99d9e2e1eefcd29d1f58b19b5c4246"
+    }
+  ]
+}
