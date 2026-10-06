@@ -1,0 +1,31 @@
+name: HostRoster native feasibility
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  actual-zed-deserializer:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm test
+      - run: npm run fixture
+      - run: python scripts/prepare-native.py
+      - run: rustup toolchain install 1.98.1 --profile minimal
+      - name: Run actual pinned upstream settings consumer
+        run: |
+          rustc +1.98.1 --version > evidence/rust-toolchain.txt
+          cargo +1.98.1 run --manifest-path .native/probe/Cargo.toml -- fixtures/include-closure.json evidence/generated-fragment.json > evidence/zed-native-result.json
+          python scripts/check-native-evidence.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-feasibility-evidence
+          path: evidence/
+          if-no-files-found: error
